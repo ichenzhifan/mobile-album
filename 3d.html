@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>3d</title>
+    <script>
+    var _html = document.getElementsByTagName('html')[0];
+    var _w = document.documentElement.clientWidth;
+
+    // 将屏幕大小分成12份.
+    _html.style.fontSize = _w / 12 + 'px';
+    </script>
+    <style>
+    body {
+        margin: 0;
+        font-size: .6rem;
+    }
+    
+    .box-3d {
+        width: 4rem;
+        height: 4rem;
+        perspective: 800;
+        -webkit-perspective: 800;
+        -moz-perspective: 800;
+    }
+    
+    .box-3d div {
+        width: .4rem;
+        height: 4rem;
+        position: absolute;
+        top: 0;
+        left: .4rem;
+        background: url(video/1.jpg) no-repeat;
+        background-size: cover;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        transform-origin: left 3.2rem;
+        -webkit-transform-origin: left 3.2rem;
+        -moz-transform-origin: left 3.2rem;
+    }
+    
+    .box-3d div.show {
+        transform: rotateY(-60deg) rotateX(5deg);
+        -webkit-transform: rotateY(-60deg) rotateX(5deg);
+        -moz-transform: rotateY(-60deg) rotateX(5deg);
+    }
+
+    .box-3d>div.show{
+    	transform:translateX(4rem);
+    	-webkit-transform:translateX(4rem);
+    	-moz-transform:translateX(4rem);
+    }
+    
+    .box-3d>div {
+        left: 0;
+    }
+    </style>
+    <script>
+    window.onload = function(){
+    	var _obj = document.getElementsByClassName('box-3d')[0];
+    	setTimeout(function(){
+    		open3d(_obj);
+    	}, 2000);
+
+    	setTimeout(function(){
+    		close3d(_obj);
+    	}, 4000);
+    };
+
+    function open3d(obj) {
+        var _aDiv = obj.getElementsByTagName('div');
+        var _len = _aDiv.length;
+
+        for (var i = 0; i < _len; i++) {
+            _aDiv[i].style.WebkitTransition = _aDiv[i].style.MozTransition = _aDiv[i].style.transition = '0.2s';
+            _aDiv[i].className = 'show';
+        }
+    }
+
+    function close3d(obj) {
+        var _aDiv = obj.getElementsByTagName('div');
+        var _len = _aDiv.length;
+
+        for (var i = 0; i < _len; i++) {          
+            _aDiv[i].className = '';
+        }
+    } 
+    </script>
+</head>
+
+<body>
+    <div class="box-3d">
+        <div>
+            <div style="background-position: -0.4rem 0">
+                <div style="background-position: -0.8rem 0">
+                    <div style="background-position: -1.2rem 0">
+                        <div style="background-position: -1.6rem 0">
+                            <div style="background-position: -2rem 0">
+                                <div style="background-position: -2.4rem 0">
+                                    <div style="background-position: -2.8rem 0">
+                                        <div style="background-position: -3.2rem 0">
+                                            <div style="background-position: -3.6rem 0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
