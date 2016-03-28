@@ -99,6 +99,9 @@
         _bOff = !_bOff;
     }
 
+    /**
+     * 照片选中时的处理函数
+     */
     function fnSelected() {
         this.style.opacity = 0.1;
 
